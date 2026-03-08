@@ -3,140 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Ultah Ceria!</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <title>Semangat Puasa Aljainudin!</title>
     <style>
-        :root {
-            --pink-soft: #ff85a2;
-            --pink-bg: #ffeef0;
-            --blue-cute: #a2d2ff;
-            --yellow-cute: #f9f871;
-        }
-
         body {
-            margin: 0; padding: 0; font-family: 'Quicksand', sans-serif;
-            background-color: var(--pink-bg); color: #444; overflow: hidden;
+            background-color: #ffe5ec;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
         }
 
-        /* --- HALAMAN SAMPUL (PENTING AGAR MUSIK JALAN) --- */
-        #overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, var(--blue-cute), var(--pink-soft));
-            display: flex; flex-direction: column; align-items: center;
-            justify-content: center; z-index: 100; text-align: center; color: white;
-            transition: 0.8s ease-in-out;
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+            z-index: 10;
         }
 
-        #overlay h2 { font-family: 'Fredoka One', cursive; font-size: 2rem; margin-bottom: 20px; }
-
-        .btn-buka {
-            background: white; color: var(--pink-soft); padding: 15px 40px;
-            border-radius: 50px; font-weight: bold; border: none; cursor: pointer;
-            font-size: 1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            animation: pulse 1.5s infinite;
+        h1 { color: #fb6f92; margin-bottom: 10px; }
+        p { color: #555; line-height: 1.6; }
+        
+        .btn {
+            background-color: #fb6f92;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: 0.3s;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+        .btn:hover { background-color: #ff8fab; }
+
+        .hidden { display: none; }
+
+        /* Animasi Hati Terbang */
+        .heart {
+            position: absolute;
+            color: #fb6f92;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+            opacity: 0;
         }
 
-        /* --- ANIMASI BALON --- */
-        .background-balloons { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-        .bg-balloon { position: absolute; bottom: -100px; font-size: 30px; animation: floatUp 8s linear infinite; opacity: 0.7; }
-        @keyframes floatUp {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
-
-        /* --- ISI UNDANGAN --- */
-        .main-content { overflow-y: auto; height: 100vh; padding-bottom: 50px; }
-        .card {
-            max-width: 420px; margin: 30px auto; background: rgba(255, 255, 255, 0.9);
-            border-radius: 30px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .hero { background: linear-gradient(180deg, var(--blue-cute), #fff); padding: 40px 20px; text-align: center; }
-        .hero h1 { font-family: 'Fredoka One', cursive; color: var(--pink-soft); font-size: 2.5rem; margin: 10px 0; }
-        .profile-pic { width: 160px; height: 160px; border-radius: 50%; border: 6px solid white; object-fit: cover; }
-
-        .content { padding: 25px; text-align: center; }
-        .info-box { background: #fff; padding: 15px; border-radius: 20px; margin-bottom: 15px; border: 2px solid var(--blue-cute); }
-        .info-box h3 { margin: 0; color: var(--pink-soft); font-family: 'Fredoka One', cursive; }
-        .btn-maps { display: block; background: var(--pink-soft); color: white; padding: 12px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 10px; }
     </style>
 </head>
 <body>
 
     <div id="overlay">
-        <h2>Halo! Kamu diundang!</h2>
-        <p>Klik tombol di bawah untuk melihat undangan</p>
-        <button class="btn-buka" onclick="bukaUndangan()">🎈 Buka Undangan</button>
+        <button class="btn" onclick="startSurprise()">Klik untuk Aljainudin ❤️</button>
     </div>
 
-    <audio id="laguUltah" loop>
-        <source src="lagu.mp3" type="audio/mpeg">
+    <div id="content" class="container hidden">
+        <h1>Semangat Puasanya!</h1>
+        <p>Halo <b>Aljainudin</b> sayang...</p>
+        <p>Jangan lemes ya puasanya hari ini. Tetap semangat ibadahnya sampai adzan maghrib nanti!</p>
+        <p><i>"Semoga berkah setiap detiknya."</i></p>
+        <hr style="border: 0.5px solid #eee">
+        <p style="font-size: 0.9em;">Dari: <b>Alin</b> ❤️</p>
+    </div>
+
+    <audio id="mySong" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="background-balloons" id="balloonContainer"></div>
-
-    <div class="main-content">
-        <div class="card">
-            <section class="hero">
-                <img src="alin.png" alt="Foto Anak" class="profile-pic">
-                <h1>Alinnn BIRTHDAY</h1>
-                <p>Hore! Aku ulang tahun yang ke-21!</p>
-            </section>
-
-            <section class="content">
-                <div class="info-box">
-                    <h3>Kapan?</h3>
-                    <p>📅 Minggu, 10 Mei 2004 <br>⏰ 15.00 WIB - Selesai</p>
-                </div>
-
-                <div class="info-box">
-                    <h3>Dimana?</h3>
-                    <p>📍 Rumah Alin </p>
-                    <a href="https://maps.app.goo.gl/bsH3RCwS7JcXAAP49" target="_blank" class="btn-maps">📍 Lihat Lokasi</a>
-                </div>
-                
-                <p>Sampai jumpa di pesta ya! 🥳</p>
-            </section>
-        </div>
-    </div>
-
     <script>
-        // Fungsi Buka Undangan & Jalankan Musik
-        function bukaUndangan() {
-            // Hilangkan overlay
-            const overlay = document.getElementById('overlay');
-            overlay.style.opacity = '0';
-            setTimeout(() => { overlay.style.display = 'none'; }, 800);
-
-            // Putar musik secara otomatis setelah klik
-            const audio = document.getElementById('laguUltah');
+        function startSurprise() {
+            // Sembunyikan tombol, munculkan konten
+            document.getElementById('overlay').classList.add('hidden');
+            document.getElementById('content').classList.remove('hidden');
+            
+            // Putar Lagu
+            var audio = document.getElementById('mySong');
             audio.play();
 
-            // Izinkan scroll
-            document.body.style.overflow = 'auto';
+            // Buat efek hati terbang
+            setInterval(createHeart, 300);
         }
 
-        // Animasi Balon
-        const container = document.getElementById('balloonContainer');
-        const balloonEmojis = ['🎈', '✨', '🎁', '🎈', '☁️'];
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
 
-        function createBalloon() {
-            const b = document.createElement('div');
-            b.className = 'bg-balloon';
-            b.innerText = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
-            b.style.left = Math.random() * 100 + 'vw';
-            b.style.animationDuration = (Math.random() * 4 + 4) + 's';
-            container.appendChild(b);
-            setTimeout(() => { b.remove(); }, 8000);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
         }
-
-        setInterval(createBalloon, 600);
     </script>
 </body>
 </html>
